@@ -1,0 +1,10 @@
+app:
+  port: 6969
+  host: 127.0.0.1
+db:
+  host: 127.0.0.1
+  port: 6500
+  username: "admin"
+  password: "password123"
+  database_name: "notes"
+

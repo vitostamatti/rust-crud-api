@@ -1,0 +1,60 @@
+
+@hostname = http://localhost
+@port = 6969
+@host = {{hostname}}:{{port}}
+@contentType = application/json
+
+###
+
+# Health Check
+
+GET {{host}}/api/healthcheck HTTP/1.1
+
+
+###
+
+# Get Notes
+
+GET {{host}}/api/notes?take=2&skip=2 HTTP/1.1
+
+
+###
+
+# Get Notes
+
+GET {{host}}/api/notes?take=3 HTTP/1.1
+
+###
+# Create Note
+POST {{host}}/api/notes HTTP/1.1
+Content-Type: {{contentType}}
+
+{
+    "title":"note title 0",
+    "content": "the content of the note"
+}
+
+
+###
+# Get Note by Id
+@id = cd7ec514-02f5-4854-a7a7-5c9040f5cf95
+
+GET {{host}}/api/notes/{{id}} HTTP/1.1
+
+
+###
+# Update Note
+
+PUT {{host}}/api/notes/{{id}} HTTP/1.1
+Content-Type: application/json
+
+{
+    "published":true
+}
+
+
+
+###
+# Delete Note
+
+DELETE {{host}}/api/notes/{{id}} HTTP/1.1
